@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>page test cagnotte</title>
+    </head>
+    <body>
+        <h1>{{ utilisateur }}</h1>
+     <ul>
+         {% if cagnottePage %}
+         {% for cagnotte in cagnottePage  %}
+         <li>
+            <b>ok</b>
+             {{ cagnotte.user.username }}
+             </li>
+             <li>
+             {{ cagnotte.id }}
+         </li>
+         <li>
+             {{ cagnotte.sommetotal }}
+         </li>
+         {% endfor %}
+         {% else %}
+         <p>il n'y a aucune cagnotte à ce nom</p>
+         {% endif %}
+     </ul>
+    </body>
+</html>

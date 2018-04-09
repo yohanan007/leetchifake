@@ -1,0 +1,31 @@
+oc_leetchifake_homepage:
+    path:     /
+    defaults: { _controller: OCLeetchifakeBundle:Default:index }
+
+oc_leetchifake_addition:
+    path:    /add
+    defaults: { _controller: OCLeetchifakeBundle:Default:add }
+
+oc_leetchifake_cagnotte:
+    path:    /cagnotte/{user}
+    defaults: { _controller: OCLeetchifakeBundle:Default:cagnotteName }
+
+oc_leetchifake_don:
+    path:    /cagnotteDon/{id}
+    defaults: { _controller: OCLeetchifakeBundle:Default:don }
+
+oc_leetchifake_validation:
+    path:    /validation
+    defaults: { _controller: OCLeetchifakeBundle:Default:validation }
+
+oc_leetchifake_rechercheTest:
+    path:    /recherche
+    defaults: { _controller: OCLeetchifakeBundle:Default:recherche }
+
+oc_leetchifake_formulaire:
+    path:    /formulaire/{id}
+    defaults: { _controller: OCLeetchifakeBundle:Default:formulaire }
+
+oc_leetchifake_formulaireTest:
+    path:    /test
+    defaults: { _controller: OCLeetchifakeBundle:Default:test }

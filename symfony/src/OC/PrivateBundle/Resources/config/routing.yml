@@ -1,0 +1,7 @@
+oc_private_homepage:
+    path:     /{user}/{id}
+    defaults: { _controller: OCPrivateBundle:Default:index }
+
+oc_private_modification:
+    path:    /modification/{id}/{nom}
+    defaults: { _controller: OCPrivateBundle:Default:modification }

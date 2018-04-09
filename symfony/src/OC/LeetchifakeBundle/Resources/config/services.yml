@@ -1,0 +1,8 @@
+services:
+#    oc_leetchifake.example:
+#        class: OC\LeetchifakeBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+
+#    Fixtures services
+         OC\LeetchifakeBundle\DataFixtures\ORM\typeFixtures:
+            tags: [doctrine.fixture.orm]

@@ -1,0 +1,372 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>leetchifakeintro</title>
+        
+        {%block javascript%}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        {%endblock%}
+        {%block stylesheets%}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        
+        <style>
+        
+        #cagnotte_edit_leetchi_types
+        {
+            position: absolute;
+            visibility:hidden;
+        }
+        
+       
+     p{
+          font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+          font-size: 18px;
+          font-style: normal;
+          font-variant: normal;
+          font-weight: 500;
+          line-height: 24.2px;
+      }
+      
+         header
+         {
+             background:url(../joy.jpeg) no-repeat center  ;
+             background-size: cover ;
+             height:100%;
+            
+         }
+
+         .navbar
+         {
+             border-radius: 0;
+         }
+         
+       
+         .affix
+         {
+             
+             top: 0;
+             width: 100%;
+             z-index: 9999;
+             background-color: white;
+         }
+         
+
+         .affix + .container-fluid
+         {
+             padding-top: 70px;
+            
+         }
+         
+         .affix-top
+         {
+             position: static;
+         }
+         
+         .navbar a 
+         {
+             font-family: "Arial Black", Arial,  sans-serif;
+             font-size: 15px;
+             color: #FF5733;
+         }
+         
+         .affix a 
+         {
+             color: #454545;
+         }
+         
+         td
+         {
+             padding-right:19px;
+         }
+         
+         
+         
+        .boutonc:hover
+         {
+             
+            transform: translate(0px,-8px);
+         }
+         
+         .cadretete
+         {
+             position: relative;
+             background-color: white;
+             border: inset;
+             width: 100%;
+             list-style-type: none;
+             margin: 0;
+             padding: 0;
+
+         }
+         
+         .choix_tete
+         {
+             border: solid;
+             background-color: #454545;
+         }
+       
+       
+         
+         .cadrechoix
+         {
+             
+            visibility: hidden;
+           position: absolute;
+            
+             list-style-type: none;
+             margin: 0;
+             padding:0;
+            width: 63%;
+             height: 90px;
+             border: inset;
+                overflow: scroll;
+                overflow-x: hidden ;
+                background-color: white;
+                z-index: 90;
+         }
+         
+         .choix
+         {
+            
+            font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+          font-size: 18px;
+          font-style: normal;
+          padding-top:5px;
+          padding-bottom:5px;
+          margin:0;
+          
+            
+         }
+         
+         .choix:hover
+         {
+             background-color: #DAF7A6;
+         }
+         
+         form{
+             padding-top:5%;
+         }
+         </style>
+        {%endblock%}
+    </head>
+    <body>
+        <header>
+          
+            <!-- navigation -->
+           <nav class="navbar" data-spy="affix" data-offset-top="197" >
+           <div class="container-fluid">
+               <div class="navbar-header"><img src="../titre.png" style="height:7%;"></img><a class="navbar-brand" href="#">LEETCHIFAKE</a></div>
+                <ul class="nav navbar-nav ">
+                    <li class="active">
+                        <a class="nav-link"  href="#">
+                            LIEN 1
+                        </a>
+                    </li>
+                     <li >
+                        <a class="nav-link"  href="#">
+                            LIEN 2
+                        </a>
+                    </li>
+                     <li >
+                        <a class="nav-link"  href="#">
+                            LIEN 3
+                        </a>
+                    </li>
+                     <li >
+                        <a class="nav-link"  href="#">
+                            LIEN 4
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <a href="#">Connecté en tant que {{ app.user.username }} -</a></li><li>
+                <a href="{{ path('fos_user_security_logout') }}"><span class="glyphicon glyphicon-log-out"></span></a></li>
+                {% else %}
+                   <a id="bouton" href="{{ path('fos_user_security_login') }}"><span id="login" class="glyphicon glyphicon-user" style="display:none;"></span> LOG IN </a>
+            {% endif %}</li>
+                   
+                </ul>
+                </div>
+            </nav>
+            
+            <!-- fin de la barre de navigation -->
+            
+            
+            <div class="container" style="
+            position:absolute; top:5%; left:5%;">
+            <div class="row" style="padding:8%">
+                <!-- moitié numéro 1-->
+                <div class="col-md-6" style="padding-top: 6%; padding-left:5%; padding-right:2%; color:white;">
+                    <h3> LA CAGNOTTE POUR TOUS FAKE!</h3>
+                <p>SITE ESSAI LEETCHIFAKE , LE TEXTE PRINCIPAL DU SITE CE SITUE ICI. 
+                ICI SE SITUE LE TEXTE QUE VOUS FAIRE EN PASSER EN PREMIER POUR VOTRE PUBLIC !</p></br><p>En sautant une ligne on arrive ici sur un texte sans majuscule!</p></div>
+               
+               <!-- moitié numéro 2-->
+                 <div class="col-md-6" style="padding-left:10%; ">
+                     
+              <div class="container-fluid">
+                    <div class="well" style=" display:block; padding-top: 10%; ">
+                        <h4>VOTRE CAGNOTTE EN LIGNE</h4>
+                        <p>choisisser votre type de cagnotte</p>
+                        <span>
+                           <ul class="cadretete">
+                                  <p style="text-align:left;"> choix 1 <button  class="choix_tete" style="float:right;">
+                                      <span class="glyphicon glyphicon-menu-down"></span></button></p>
+                                </ul>
+                                
+                                 <ul class="cadrechoix">
+                                     {% for item in type %} 
+                                <li class="choix" id=" {{ loop.index }} ">
+                                    <span class="glyphicon glyphicon-user" style="border:solid; color:blue;"></span> {{ item.nom }} 
+                                </li>
+                                {% endfor %} 
+                               
+                            </ul>
+                            
+                        </span>
+                        
+                    {# méthode 1 form   {{ form(form) }} #}
+                        {# debut méthode 2 form #}
+                        {{ form_start(form) }}
+                        {{ form_errors(form) }}
+                        {{ form_row(form.nom) }}
+                        {{ form_row(form.sommetotal) }}
+                       {{ form_row(form.types,{'label':false}) }}
+                      {{ form_end(form) }}
+                       {# fin méthode 2 #}
+                    </div>
+                </div>
+                 
+                 
+                 <!-- fin de formulaire via symfony -->
+                 </div>
+                </div>
+                 
+                 
+            </div>
+        </header>
+       <section >
+           <article class="container-fluid" style="background-color:d400ff; color:ffffff;">
+               
+            <center><h2 style="padding:2%;">CHOISISSER VOTRE EVENEMENT </h2></center>
+               <hr width="80%">
+               <div class="row">
+                   <div class="col-md-6" style="padding:5%;">
+                       <center>
+                       <table><tr><td><button class="boutonc btn btn-success btn-lg"><span class="glyphicon glyphicon-envelope fa-2x"></span></button></td>
+                       <td><button class=" boutonc btn btn-success  btn-lg"><span class="glyphicon glyphicon-search fa-2x "></span></td>
+                       <td><button class="boutonc btn btn-success  btn-lg"><span class="glyphicon glyphicon-envelope fa-2x"></span></button></td>
+                       <td> <button class=" boutonc btn btn-success   btn-lg"><span class="glyphicon glyphicon-search fa-2x"></span></button></td>
+                       </tr><tr><td><p>bla bla</p></td><td><p>bla bla</p></td><td><p>bla bla</p></td><td><p>bla bla</p></td></tr></table>
+                      </br>
+                      <table><tr><td><button class="boutonc btn btn-success btn-lg"><span class="glyphicon glyphicon-envelope fa-2x"></span></button></td>
+                       <td><button class="boutonc btn btn-success  btn-lg"><span class="glyphicon glyphicon-search fa-2x "></span></td>
+                       <td><button class="boutonc btn btn-success  btn-lg"><span class="glyphicon glyphicon-envelope fa-2x"></span></button></td>
+                       <td> <button class="boutonc btn btn-success   btn-lg"><span class="glyphicon glyphicon-search fa-2x"></span></button></td>
+                       </tr><tr><td><p>bla bla</p></td><td><p>bla bla</p></td><td><p>bla bla</p></td><td><p>bla bla</p></td></tr></table>
+                       </center>
+                   </div>
+                   <div class="col-md-6" style="padding:5%;">
+                      <center>
+                       <table><tr><td><button class="boutonc btn btn-success btn-lg"><span class="glyphicon glyphicon-envelope fa-2x"></span></button></td>
+                       <td><button class="boutonc btn btn-success  btn-lg"><span class="glyphicon glyphicon-search fa-2x "></span></td>
+                       <td><button class="boutonc btn btn-success  btn-lg"><span class="glyphicon glyphicon-envelope fa-2x"></span></button></td>
+                       <td> <button class="boutonc btn btn-success   btn-lg"><span class="glyphicon glyphicon-search fa-2x"></span></button></td>
+                       </tr><tr><td><p>bla bla</p></td><td><p>bla bla</p></td><td><p>bla bla</p></td><td><p>bla bla</p></td></tr></table>
+                      </br>
+                      <table><tr><td><button class="boutonc btn btn-success btn-lg"><span class="glyphicon glyphicon-envelope fa-2x"></span></button></td>
+                       <td><button class="boutonc btn btn-success  btn-lg"><span class="glyphicon glyphicon-search fa-2x "></span></td>
+                       <td><button class="boutonc btn btn-success  btn-lg"><span class="glyphicon glyphicon-envelope fa-2x"></span></button></td>
+                       <td> <button class="boutonc btn btn-success   btn-lg"><span class="glyphicon glyphicon-search fa-2x"></span></button></td>
+                       </tr><tr><td><p>bla bla</p></td><td><p>bla bla</p></td><td><p>bla bla</p></td><td><p>bla bla</p></td></tr></table>
+                       </center>
+                   </div>
+               </div> 
+       
+           </article>
+         <article class="container-fluid" style="background-color:6b4d91; color:ffffff;">
+            <center>
+                 <h2 style="padding:2%; ">PAYEMENT EN TOUTE SECURITE GRACE A NOS PARTENAIRE!</h2>
+            </center>
+              <hr width="80%">
+              <div class="row">
+                  <div class="col-md-6">
+                      <center><h2>POUR VOTRE ANNIVERSAIRE!</h2></center>
+                  </div>
+                  <div class="col-md-6">
+                     <center><h2>POUR VOTRE ANNIVERSAIRE!</h2></center>
+                  </div>
+              </div>
+         </article>
+       </section>
+       <script>
+       $(document).on('scroll',function(){
+           $("nav").each(function(){
+               if ($(this).hasClass("affix"))
+               {
+                   $("#bouton").addClass("btn btn-warning");
+                   $("#login").css({"display":"initial"});
+               }
+               else if ($("#bouton").hasClass("btn btn-warning"))
+               {
+                   $("#bouton").removeClass("btn btn-warning");
+                   $("#login").css({"display":"none"});
+               }
+           });
+  
+       });
+       
+       
+      $(document).ready(function(){
+          var i = 0;
+          
+          $(document).on('click',function(){
+                   
+                   console.log("clique pour hidden");
+                   $(".cadrechoix").css({"visibility":"hidden"});
+                   i = 0;
+                   console.log("valeur de i:" + i)
+                   
+               });
+          
+            function choix(){    $(".choix_tete").click(function(e){
+                       console.log("clique de choix tete");
+                       if(i == 0){
+               $(".cadrechoix").css({"visibility":"visible"});
+               i = 1;
+               console.log("clique voici la veur de i:" + i);
+               e.stopPropagation();
+                       }
+           });  
+            }
+               choix(); 
+ 
+
+ $(".choix").click(function(e){
+     var valeur = $(this).attr('id') - 1;
+     var htmltexts =  $(this).html();
+     console.log('variable htmltext:' + htmltexts);
+     var texte = "<p style='text-align:left;'>" + htmltexts + "<button class='choix_tete' style='float:right;'><span class='glyphicon glyphicon-menu-down'></span></button></p>";
+     console.log("variable texte:" + texte);
+     console.log("valeur de e" + e);
+     console.log("valeur de id:" + valeur);
+     $(".cadretete").html(texte);
+     
+      document.getElementById("cagnotte_edit_leetchi_types").selectedIndex=valeur;
+
+     choix();
+ 
+ });
+ 
+
+                
+
+      });
+           
+       </script>
+    </body>
+</html>

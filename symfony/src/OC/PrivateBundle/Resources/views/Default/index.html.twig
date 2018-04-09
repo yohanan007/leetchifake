@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>ESPACE PERSONNEL {{user}}</title>
+        {%block javascript%}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        {%endblock%}
+        {%block stylesheets%}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+       
+        {%endblock%}
+    </head>
+    <body>
+      
+        <nav class="navbar navbar-default" style="border-radius:0px;">
+            <div class="container-fluid">
+            <div class="navbar-header"><a class="navbar-brand " href="../../">INDEX</a></div>
+            <ul class="nav navbar-nav"> <li class="active"><a href="{{ path('fos_user_security_logout') }}">DECONNEXION </a></li></ul>
+            </div>
+        </nav>
+      <section class="container">
+          <div class="well">
+          <h2>rappel de vos données personnel</h2>
+          <p>bonjour bienvenue {{ user }} identifiant {{ id }}</p>
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th>identifiant</th>
+                      <th>nom</th>
+                      <th>mail</th>
+                      <th>derniére connexion</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>{{ app.user.id }}</td>
+                      <td>{{ app.user.username }}</td>
+                      <td>{{ app.user.email }}</td>
+                      <td>{{ app.user.lastLogin|date('Y:m:d H:i:s')}}</td>
+                  </tr>
+              </tbody>
+          </table>
+        </div>
+        <div class="well">
+            <p>liste de vos cagnottes référencés</p>
+            {% for somme in app.user.cagnottes %}
+            
+                <a href="../modification/{{somme.id}}/{{somme.nom}}">modifier la cagnotte</a>
+                
+                <div class="media">
+                    <div class="media-left">
+                        <img src="{{ asset(somme.image.webPath) }}" alt="{{ somme.image.alt }}" class="media-object" style="width:200px;"></img>
+                    </div>
+                    <div class="media-body">
+                         <table class="table">
+              <thead>
+                  <tr>
+                      <th>identifiant</th>
+                      <th>nom</th>
+                      <th>don à collecté</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>{{ somme.id }}</td>
+                      <td>{{ somme.nom }}</td>
+                      <td>{{ somme.sommetotal }}</td>
+                  </tr>
+              </tbody>
+          </table>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        </section>
+    </body>
+</html>
+

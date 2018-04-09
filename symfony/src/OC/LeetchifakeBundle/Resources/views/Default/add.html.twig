@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>leetchifakeintro</title>
+        
+        {%block javascript%}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        {%endblock%}
+        {%block stylesheets%}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+       
+        {%endblock%}
+    </head>
+
+    <body>
+        <h3>formulaire d'annonce</h3>
+<div class="well">
+   {{ form(form) }}
+</div>
+
+
+<div class="well">
+    {{ form_row(form.types) }}
+    <a href="#" id="add_type" class="btn btn-default">ajouter un type</a>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var $container = $('div#oc_leetchifakebundle_cagnotte_type');
+            var index = $container.find(':input').length;
+            $('#add_type').click(function(e){
+                addtype($container);
+                e.preventDefault();
+                return false;
+            });
+            if (index == 0 ){
+                addtype($container);
+            }
+            else 
+                {
+                    $container.children('div').each(function(){
+                        addDeleteLink($(this));
+                    });
+                }
+                
+                function addtype($container){
+                    var template = $container.attr('data-prototype')
+                    .replace(/_name_label_/g, 'Catégories n° ' +  (index+1))
+                    .replace(/_name_/g, index)
+                    ;
+                    
+                    
+                    var $prototype = $(template);
+                    addDeleteLink($prototype);
+                    $container.append($prototype);
+                    index++;
+                    
+                }
+                
+                function addDeleteLink($prototype){
+                    var $deleteLink = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+                    $prototype.append($deleteLink);
+                    $deleteLink.click(function(e){
+                        $prototype.remove();
+                        e.preventDefault();
+                        return false;
+                    });
+                }
+        });
+    </script>
+</div>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        <p>vous êtes authentifier en tant que {{ app.user.username }}</p>
+        <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+        {% else %}
+        <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+        {% endif %}
+
+    </body>
+</html>

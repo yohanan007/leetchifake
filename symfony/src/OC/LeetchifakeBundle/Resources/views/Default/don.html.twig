@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <title> don cagnotte {{ id}} </title>
+        {%block javascript%}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+          <!-- script de  calcul du pourcentage  de don et affichage -->
+          <script>
+             var i = 0;
+
+             {% for don in cagnotte.dons %}
+          
+            i =    {{ don.don }}  + i;
+          
+       {% endfor %}
+       console.log("valeur de i: " + i);
+       
+       var j = i/({{ cagnotte.sommetotal }})*100;
+       console.log("valeur de j: " + j);
+       $(document).ready(function(){
+            $("#bar").width(j);
+       $("#bar").text(j);
+       });
+      
+          </script>
+          <!-- fin de script -->
+        {%endblock%}
+        {%block stylesheets%}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+        
+        <style>
+       
+           header
+         {
+             background:url(../joy.jpeg) no-repeat center  ;
+             background-size: cover ;
+             height:100%;
+         }
+
+         .navbar
+         {
+             border-radius: 0;
+         }
+         
+        
+         </style>
+        {%endblock%}
+    </head>
+    <body>
+        <section style="position:absolute; top:30%; width:100%;">
+        <div class="container">
+        <!-- cagnotte  -->
+         <div class="media">
+                    <div class="media-left">
+                        <img src="{{ asset(cagnotte.image.webPath) }}" alt="{{ cagnotte.image.alt }}" class="media-object" style="width:200px;"></img>
+                    </div>
+                    <div class="media-body">
+                         <table class="table">
+              <thead>
+                  <tr>
+                      <th>identifiant</th>
+                      <th>nom</th>
+                      <th>don à collecté</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                      <td>{{ cagnotte.id }}</td>
+                      <td>{{ cagnotte.nom }}</td>
+                      <td>{{ cagnotte.sommetotal }}€</td>
+                  </tr>
+              </tbody>
+          </table>
+                    </div>
+                </div>
+       <p>don récolté: </p>
+       
+       <div class="progress">
+           <div id="bar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="40" 
+           aria-valuemin="0" aria-valuemax="100" >
+              
+           </div> 
+       </div>
+       
+      
+        
+        <!-- fin cagnotte -->
+      <!-- formulaire de don -->
+        {% if ok is defined %}
+         {% if ok == '0'%}  
+         <b> erreur </b>
+        <p>{{ e }}</p>
+        
+        {% else %}
+        
+        <b>enregistrement du don validé</b>
+        
+        {% endif %}
+        {%endif %}
+       <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">faire un don!</button>
+                <!-- fenêtre modal -->
+                <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">don pour la cagnotte : {{ cagnotte.nom }} </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="well">
+                                    {{ form(form) }}
+                                </div>
+                        </div>
+                        
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button> 
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <!-- fin fenêtre modal -->
+        
+        
+        
+       </div>
+       </section>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>recherche</title>
+        {%block javascript%}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        {%endblock%}
+        {%block stylesheets%}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+       
+        {%endblock%}
+    </head>
+    <body>
+        <input  type="text" id="recherche"></input>
+       <p><b>réponse:</b>{{ recherche }} </p> 
+       <span id="reponse"></span>
+       <script type="text/javascript"> 
+       $(document).ready(function(){
+           
+           var input = $('#recherche').val();
+           $('#recherche').keyup(function(){
+               input = $('#recherche').val();
+               input = encodeURIComponent(input);
+               console.log("nouvelle valeur input: " + input);
+               $.ajax({
+                    
+                    method: "POST",
+                    url: "#",
+                    scriptCharset: "utf-8",
+                    contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+                     data: { recherches: input },
+                     success: function(result){
+                         console.log(result);
+                          console.log("length: " + result.length);
+                          console.log(JSON.parse(result));
+                          var chose = JSON.parse(result);
+                          $("#reponse").append("<b> id: " + chose[0]["id"] + "</b>")
+                         
+                         
+                     }
+                    });
+
+                     
+           
+           
+       });
+       });
+       </script>
+    </body>
+</html>
